@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+
+function converterTemperatura(valor, tipoConversao) {
+  // Validação de entrada
+  if (typeof valor !== 'number' || isNaN(valor)) {
+    return 'Erro: a temperatura deve ser um número válido.';
+  }
+
+  // Verifica se o tipo de conversão é válido
+  if (tipoConversao !== 'CtoF' && tipoConversao !== 'FtoC') {
+    return 'Erro: tipo de conversão inválido. Use "CtoF" para Celsius para Fahrenheit ou "FtoC" para Fahrenheit para Celsius.';
+  }
+
+  // Conversão de Celsius para Fahrenheit
+  if (tipoConversao === 'CtoF') {
+    return (valor * 9 / 5) + 32;
+  }
+
+  // Conversão de Fahrenheit para Celsius
+  if (tipoConversao === 'FtoC') {
+    return (valor - 32) * 5 / 9;
+  }
+}
+
+console.log(converterTemperatura(0, 'CtoF'));    // 32 (0°C = 32°F)
+console.log(converterTemperatura(32, 'FtoC'));   // 0 (32°F = 0°C)
+console.log(converterTemperatura(100, 'CtoF'));  // 212 (100°C = 212°F)
+console.log(converterTemperatura(212, 'FtoC')); // 100 (212°F = 100°C)
+
+console.log(converterTemperatura('100', 'CtoF')); // Erro: a temperatura deve ser um número válido.
+console.log(converterTemperatura(100, 'FtoK'));   // Erro: tipo de conversão inválido.
+
+    </script>
+</body>
+</html>

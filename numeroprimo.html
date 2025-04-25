@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+
+function encontrarNumeroPrimo(numero) {
+  // Verifica se o número é menor que 2, já que números menores que 2 não são primos
+  if (numero < 2) {
+    return false;
+  }
+
+  // Verificação até a raiz quadrada do número
+  for (let i = 2; i <= Math.sqrt(numero); i++) {
+    if (numero % i === 0) {
+      return false; // Se for divisível por qualquer número, não é primo
+    }
+  }
+
+  // Se não for divisível por nenhum número entre 2 e a raiz quadrada, é primo
+  return true;
+}
+
+console.log(encontrarNumeroPrimo(2));   // true (2 é primo)
+console.log(encontrarNumeroPrimo(3));   // true (3 é primo)
+console.log(encontrarNumeroPrimo(4));   // false (4 não é primo)
+console.log(encontrarNumeroPrimo(29));  // true (29 é primo)
+console.log(encontrarNumeroPrimo(100)); // false (100 não é primo)
+console.log(encontrarNumeroPrimo(1));   // false (1 não é primo)
+
+
+    </script>
+</body>
+</html>

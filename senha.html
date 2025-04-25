@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+
+function gerarSenha(comprimento) {
+  // Validação da entrada
+  if (typeof comprimento !== 'number' || isNaN(comprimento) || comprimento < 4) {
+    return 'Erro: informe um comprimento numérico válido (mínimo de 4).';
+  }
+
+  // Conjuntos de caracteres
+  const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+  const numeros = '0123456789';
+
+  // Todos os caracteres combinados
+  const todos = letrasMaiusculas + letrasMinusculas + numeros;
+
+  let senha = '';
+
+  // Garante que pelo menos um de cada tipo seja incluído
+  senha += letrasMaiusculas[Math.floor(Math.random() * letrasMaiusculas.length)];
+  senha += letrasMinusculas[Math.floor(Math.random() * letrasMinusculas.length)];
+  senha += numeros[Math.floor(Math.random() * numeros.length)];
+
+  // Preenche o restante da senha aleatoriamente
+  for (let i = senha.length; i < comprimento; i++) {
+    senha += todos[Math.floor(Math.random() * todos.length)];
+  }
+
+  // Embaralha os caracteres para não deixar os 3 primeiros previsíveis
+  senha = senha.split('').sort(() => Math.random() - 0.5).join('');
+
+  return senha;
+}
+
+console.log(gerarSenha(8));   // Exemplo: "aB3eF1z2"
+console.log(gerarSenha(12));  // Exemplo: "R8mZk9e2tWq1"
+console.log(gerarSenha(3));   // Erro: comprimento muito curto
+
+
+    </script>
+</body>
+</html>
